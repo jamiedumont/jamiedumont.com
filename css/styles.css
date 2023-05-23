@@ -1,0 +1,357 @@
+:root {
+  /* Unify on hsl */
+  --blue: hsl(207.05, 70.94%, 13.46%);
+  --blue-darker: rgba(0, 39, 94, 0.6);
+
+  --black: black;
+  --dark-grey: #333;
+  --light-grey: #999;
+  --off-white: #eee;
+  --page-background: var(--off-white);
+  
+  --font-system: system-ui, sans-serif;
+  --measure: 70ch;
+  
+  --ease-in-out: cubic-bezier(.4,0,.2,1);
+}
+
+/* Set some sensible defaults, opting for exception-based styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.5;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--off-white);
+  color: var(--dark-grey);
+  font-family: var(--font-system);
+  word-break: break-word;
+}
+
+main {
+  padding: 2rem;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 0.8rem;
+  max-inline-size: 70ch;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+a {
+  color: currentcolor;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:not([class]) {
+  color: var(--blue-darker);
+}
+
+a:not([class]):hover {
+  color: var(--blue);
+}
+
+img {
+  border-style: none;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+figcaption {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  text-align: center;
+  max-inline-size: 100%;
+}
+
+details {
+  display: block;
+}
+
+details summary { 
+  cursor: pointer;
+  margin-block-end: 0.35rem;
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 2px solid var(--blue-darker);
+  padding-inline-start: 2rem;
+  font-size: 1.2rem;
+}
+
+ul {
+  padding-inline-start: 1.5rem;
+}
+
+li {
+  margin-block-end: 0.35rem;
+}
+
+ul::not([class]) > li + li {
+  margin-block-start: 1rem;
+}
+
+input,
+button {
+  border: 0;
+  padding-inline: 1.4rem;
+  padding-block: 1rem;
+  border-radius: 0.25rem;
+}
+
+button {
+  background-color: var(--blue);
+  color: var(--dark-grey) !important;
+}
+
+button:hover {
+  background-color: var(--blue-darker);
+  cursor: pointer;
+  color: white !important;
+}
+
+.with-sidebar {
+  min-inline-size: 100vw;
+}
+
+.with-sidebar > main {
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.with-sidebar > main > .spacer {
+  flex-grow: 999;
+}
+
+.with-sidebar > aside {
+  position: fixed;
+  transform: translateY(calc(100vh - 5.5rem));
+  transition-property: transform;
+  transition-duration: 400ms;
+  transition-timing-function: var(--ease-in-out);
+  background-color: white;
+  z-index: 10;
+  min-inline-size: 100vw;
+}
+
+.with-sidebar.nav-open > aside {
+  transform: translateY(0);
+}
+
+@media (min-width: 610px) {
+  .with-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .with-sidebar > aside {
+    position: sticky;
+    transform: translateY(0);
+    min-inline-size: 0;
+    background-color: transparent;
+    flex-grow: 1;
+    flex-basis: 300px;
+  }
+  
+  .with-sidebar > main {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+  }
+  
+  .sidebar {
+    position: sticky;
+    top: 0;
+  }
+  
+  .sidebar #menu-toggle {
+    display: none;
+  }
+
+}
+
+.sidebar {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-inline-size: 300px;
+}
+
+.sidebar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 2rem;
+}
+
+.sidebar nav {
+  font-size: 0.8rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: var(--light-grey);
+}
+
+.sidebar a.current {
+  color: var(--blue-darker);
+  font-weight: 500;
+}
+
+.sidebar .name {
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  font-weight: 100;
+  letter-spacing: 0.1rem;
+}
+
+.sidebar .expander {
+  flex: 1;
+}
+
+.sidebar ul.high-tide-list {
+  padding-inline-start: 1.5rem;
+}
+
+.sidebar ul.high-tide-list .high-tide-more {
+  color: var(--light-grey);
+  font-style: italic;
+}
+
+
+
+/* IDIOMS */
+
+/*
+  .flow give me a baseline vertical rhythm.
+  It's rarely left unmodified, either through the custom property --flowspace,
+  or context such as .prose 
+*/
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+/* 
+  .prose is used for long form content, in our case newsletters, "standard"
+  pages and as a baseline for all stories.
+*/
+.prose {
+  --flow-space: 1.75rem;
+}
+
+/*  Often redundant, but ensures no space above first child element of .prose */
+.prose > :first-child {
+  margin-block-start: 0;
+}
+
+/* Increase the space above headings */
+.prose :is(* + h1, * + h2, * + h3, * + h4) {
+  --flow-space: 3rem;
+}
+
+/* Reduce the space under headings */
+.prose :is(h1 + *, h2 + *, h3 + *, h4 + *) {
+  --flow-space: 1rem;
+}
+
+/* When images follow one another, mirror the horizontal spacing in any rows */
+.prose > figure + figure {
+  --flow-space: 1rem;
+}
+
+/* Add additional space around images */
+.prose :is(figure + p, p + figure) {
+  --flow-space: 2.5rem;
+}
+
+.site-footer {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  padding: 2rem 0 1rem;
+  text-align: center;
+  margin-block-start: 5rem;
+}
+
+.copyright {
+  font-size: 0.8rem;
+}
+
+.image-row picture + picture {
+  margin-top: 1rem;
+  display: block;
+}
+
+@media (min-width: 610px) {
+  .image-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .image-row picture + picture {
+    margin-top: 0;
+  }
+}
+
+.image-row picture,
+.image-row img {
+  margin-bottom: 0;
+}
+
+
+.image img,
+.image picture {
+  width: 100%;
+  margin-block-end: 0;
+}
+
+.sidebar .glass-icon img {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Hiding class, making content visible only to screen readers but not visually */
+/* "sr" meaning "screen-reader" */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
