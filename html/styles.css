@@ -8,11 +8,11 @@
   --light-grey: #999;
   --off-white: #eee;
   --page-background: var(--off-white);
-  
+
   --font-system: system-ui, sans-serif;
   --measure: 70ch;
-  
-  --ease-in-out: cubic-bezier(.4,0,.2,1);
+
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Set some sensible defaults, opting for exception-based styling */
@@ -90,7 +90,7 @@ details {
   display: block;
 }
 
-details summary { 
+details summary {
   cursor: pointer;
   margin-block-end: 0.35rem;
 }
@@ -169,7 +169,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
   .with-sidebar > aside {
     position: sticky;
     transform: translateY(0);
@@ -178,22 +178,21 @@ button:hover {
     flex-grow: 1;
     flex-basis: 300px;
   }
-  
+
   .with-sidebar > main {
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: 50%;
   }
-  
+
   .sidebar {
     position: sticky;
     top: 0;
   }
-  
+
   .sidebar #menu-toggle {
     display: none;
   }
-
 }
 
 .sidebar {
@@ -223,6 +222,7 @@ button:hover {
 .sidebar a {
   text-decoration: none;
   color: var(--dark-grey);
+  text-align: left;
 }
 
 .sidebar a:hover {
@@ -253,8 +253,6 @@ button:hover {
   color: var(--light-grey);
   font-style: italic;
 }
-
-
 
 /* IDIOMS */
 
@@ -322,7 +320,7 @@ button:hover {
     display: flex;
     gap: 1rem;
   }
-  
+
   .image-row picture + picture {
     margin-top: 0;
   }
@@ -332,7 +330,6 @@ button:hover {
 .image-row img {
   margin-bottom: 0;
 }
-
 
 .image img,
 .image picture {
@@ -345,14 +342,18 @@ button:hover {
   height: 1rem;
 }
 
+.sidebar .glass-icon svg {
+  margin-block-start: 3px;
+}
+
 /* Hiding class, making content visible only to screen readers but not visually */
 /* "sr" meaning "screen-reader" */
 .sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
-  white-space: nowrap; 
+  white-space: nowrap;
   width: 1px;
 }

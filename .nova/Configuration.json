@@ -1,5 +1,6 @@
 {
   "workspace.name" : "jamiedumont.com",
+  "workspace.preview_root" : "html",
   "workspace.preview_server_allow_external" : true,
   "workspace.preview_server_port" : 4004
 }
