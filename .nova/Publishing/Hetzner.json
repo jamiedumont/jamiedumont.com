@@ -1,0 +1,11 @@
+{
+  "identifier" : "856653C8-3088-4B0A-8661-F0A54E4D0278",
+  "ignoredFilePatterns" : [
+    ".nova",
+    ".gitignore",
+    "deploy-script.sh"
+  ],
+  "remoteURL" : "https:\/\/jamiedumont.com",
+  "server" : "Hetzner",
+  "usesPublishing" : true
+}
