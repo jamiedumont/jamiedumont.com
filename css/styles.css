@@ -226,6 +226,11 @@ aside .name {
   letter-spacing: 0.1rem;
   color: var(--black);
 }
+
+aside .name img {
+  max-height: 48px;
+}
+
 .sidebar .glass-icon img {
   height: 1rem;
 }
