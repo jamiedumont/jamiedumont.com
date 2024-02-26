@@ -1,0 +1,1 @@
+rsync --delete --exclude=".git" --exclude="deploy.sh" --exclude=".DS_Store" -avz ./ caddy:/var/www/html

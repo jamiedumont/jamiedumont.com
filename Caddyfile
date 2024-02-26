@@ -1,0 +1,36 @@
+www.jamiedumont.com {
+  redir https://jamiedumont.com{uri} permanent
+}
+
+jamiedumont.com {
+  root * /var/www/html
+  file_server
+  encode gzip
+
+  try_files {path} {path}/ =404
+  
+  log {
+    output file /var/www/logs/access.log {
+      roll_size 5gb
+      roll_keep 5
+      roll_keep_for 720h
+    }
+    format json
+  }
+  
+  # Display error page
+  handle_errors {
+    rewrite * /{err.status_code}.html
+    file_server
+  }
+  
+  # Redirects
+  @stories path_regexp stories ^/stories/(.*)$
+  redir @stories /{re.stories.1} permanent
+  
+  @shoots path_regexp shoots ^/portfolio/shoots/(.*)$
+  redir @shoots /{re.shoots.1} permanent
+  
+  redir /ollie-cooper* /makers/ollie-cooper
+  redir /dynamite-valley-brewing-co* /makers/dynamite-valley-brewing-co
+}
