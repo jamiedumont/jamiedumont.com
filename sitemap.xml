@@ -2,60 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://jamiedumont.com/</loc>
-    </url>
-    <url>
-        <loc>https://jamiedumont.com/108-coffee/</loc>
-        <lastmod>2022-04-27</lastmod>
-    </url>
-    <url>
-        <loc>https://jamiedumont.com/365/</loc>
-        <lastmod>2024-01-29</lastmod>
-    </url>
+    </url> 
     <url>
         <loc>https://jamiedumont.com/about/</loc>
         <lastmod>2023-02-24</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/about/this-website/</loc>
+        <loc>https://jamiedumont.com/about/website/</loc>
     </url>
     <url>
-        <loc>https://jamiedumont.com/caveats-to-consumption-spirals/</loc>
+        <loc>https://jamiedumont.com/portfolio/</loc>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/portfolio/food-and-drink/</loc>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/posts/108-coffee/</loc>
+        <lastmod>2022-04-27</lastmod>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/posts/caveats-to-consumption-spirals/</loc>
         <lastmod>2023-02-10</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/dave-barry-48-hour-murph/</loc>
+        <loc>https://jamiedumont.com/posts/dave-barry-48-hour-murph/</loc>
         <lastmod>2022-06-12</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/knowjack-media-x-land-rover/</loc>
+        <loc>https://jamiedumont.com/posts/knowjack-media-x-land-rover/</loc>
         <lastmod>2021-11-01</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/makers/</loc>
-        <lastmod>2023-04-26</lastmod>
-    </url>
-    <url>
-        <loc>https://jamiedumont.com/makers/dynamite-valley-brewing-co/</loc>
-        <lastmod>2022-10-16</lastmod>
-    </url>
-    <url>
-        <loc>https://jamiedumont.com/makers/ollie-cooper/</loc>
-        <lastmod>2022-03-07</lastmod>
-    </url>
-    <url>
-        <loc>https://jamiedumont.com/not-your-normal-saturday-night-cocktails/</loc>
+        <loc>https://jamiedumont.com/posts/not-your-normal-saturday-night-cocktails/</loc>
         <lastmod>2021-11-27</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/race-to-the-stones-2022/</loc>
+        <loc>https://jamiedumont.com/posts/race-to-the-stones-2022/</loc>
         <lastmod>2022-07-09</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/studies/</loc>
+        <loc>https://jamiedumont.com/projects/</loc>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/projects/365/</loc>
         <lastmod>2024-01-29</lastmod>
     </url>
     <url>
-        <loc>https://jamiedumont.com/yskynna-truro-cathedral/</loc>
+        <loc>https://jamiedumont.com/projects/makers/</loc>
+        <lastmod>2023-04-26</lastmod>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/projects/makers/dynamite-valley-brewing-co/</loc>
+        <lastmod>2022-10-16</lastmod>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/projects/makers/ollie-cooper/</loc>
+        <lastmod>2022-03-07</lastmod>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/projects/makers/yskynna-truro-cathedral/</loc>
         <lastmod>2022-10-28</lastmod>
+    </url>
+    <url>
+        <loc>https://jamiedumont.com/projects/studies/</loc>
+        <lastmod>2024-01-29</lastmod>
     </url>
 </urlset>

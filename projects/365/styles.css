@@ -1,0 +1,27 @@
+h1 sup {
+  font-size: .8rem;
+  vertical-align: 160%;
+  color: var(--light-grey);
+}
+
+.day {
+  margin-block: 2rem;
+}
+
+.day h2 {
+  margin-block-start: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--light-grey);
+}
+
+.day figcaption {
+  text-align: left;
+}
+
+.day {
+}
+
+.portrait_fit img {
+  max-height: 90vh;
+}

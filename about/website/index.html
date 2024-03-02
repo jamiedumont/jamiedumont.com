@@ -1,0 +1,196 @@
+<html>
+  <head>
+    <!-- Standard HTML meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
+    <!-- About this page -->
+    <title>About this website — Jamie Dumont</title>
+    <meta name="author" content="Jamie Dumont">
+    <meta name="copyright" content="Jamie Dumont">
+    <meta
+      name="description"
+      content="The website of photographer Jamie Dumont."
+   >
+    <link rel="canonical" href="https://jamiedumont.com/about/website/">
+
+    <link rel="stylesheet" href="/assets/css/base-styles.css">
+  </head>
+
+  <body>
+    <header>
+      <a href="/">
+        Jamie Dumont
+        <span>Photographer</span>
+      </a>
+    </header>
+
+    <main class="flow prose">
+      <h1>About this website</h1>
+      <section class="flow prose">
+        <p>
+          <strong>Last updated:</strong>
+          <time datetime="2024-01-30">30 January 2024</time>
+        </p>
+
+        <p>
+          What does it say at the top of your screen? It says
+          <em>"jamiedumont.com"</em>.
+        </p>
+
+        <p>
+          I'll never meet the totally overwhelming majority of people who visit
+          this site; so in their eyes this website is me. This website
+          represents my work, my lived-experience, my skills, my voice and
+          ultimately my reputation. This realisation motivated me to make my
+          small corner of the web embody everything I believe a website should
+          be.
+        </p>
+
+        <p>
+          I've had a website under different domain names since 2012. It's taken
+          pretty much every form possible from technical blog, to photography
+          portfolio, to newsletter and back again. It's been built upon the vast
+          majority of platforms available; but all with their own unique set of
+          compromises that gnawed at me. Having done my time as a software
+          developer it felt only right to roll up my sleeves and build something
+          that adhered to my ethos and that I could be proud of.
+        </p>
+
+        <ul>
+          <li><a href="#how-is-the-site-built">How is the site built?</a></li>
+          <li>
+            <a href="#why-use-such-basic-tools">Why use such basic tools?</a>
+          </li>
+        </ul>
+
+        <h2 id="how-is-the-site-built">How is the site built?</h2>
+
+        <p>HTML &amp; CSS. At present it doesn't use any Javascript.</p>
+
+        <p>
+          I could probably leave at that. The source code for the site is
+          exactly the same as what is sent to your computer and viewable in your
+          browsers developer tools. There's no partials, no includes, no build
+          system of any kind.
+        </p>
+
+        <p>
+          The HTML is written by hand. I may write a small program to help
+          generate markup for images as they can get very verbose when a proper
+          number of size and format variants are supplied; but at the moment
+          everything you see has been written the long, slow way. The design and
+          layout has come courtesy of past versions of the site built with more
+          featureful tools — the layout of most pages are a hangover from Ghost
+          — but will slowly be rewritten to adopt the site's new identity.
+        </p>
+
+        <p>
+          The CSS is a work-in-progress, and also suffers a hangover from
+          previous versions of the site. CSS was always my thing.
+        </p>
+
+        <h3>No Static Site Generator?!</h3>
+
+        <p>
+          Before I dive into my logic behind the HTML &amp; CSS I feel I need to
+          discuss why I'm not using a static site generator (<em>SSG</em> from
+          now on). <em>SSGs</em> are undoubtedly valuable, and perhaps the best
+          way to build a website unless you have technical demands an
+          <em>SSG</em> can't meet. Two websites that I take heavy inspiration
+          from are those of
+          <a
+            href="https://paulstamatiou.com/about-this-website/"
+            target="_blank"
+            >Paul Stamatiou</a
+          >
+          and
+          <a
+            href="https://craigmod.com/essays/memberships_year_five/#tech-stack--running-costs"
+            target="_blank"
+            >Craig Mod</a
+          >
+          who use <a href="https://jekyllrb.com" target="_blank">Jekyll</a> and
+          <a href="https://gohugo.io" target="_blank">Hugo</a> respectively. My
+          preference has always been
+          <a href="https://www.getzola.org" target="_blank">Zola</a>, which is
+          best described as a more ergonomic Hugo with a slight speed bump. Many
+          versions of my site have been built with Zola because it offers a nice
+          blend of features useful to my style of publication such as
+          <a
+            href="https://www.getzola.org/documentation/content/image-processing/"
+            target="_blank"
+            >image processing</a
+          >
+          which mixed with <a href="" target="_blank">macros</a> and
+          <a
+            href="https://www.getzola.org/documentation/content/shortcodes/"
+            target="_blank"
+            >shortcodes</a
+          >
+          make writing markup with a component-like syntax straight forward.
+        </p>
+
+        <p>
+          So why aren't I using Zola now? It's hard to articulate because I
+          certainly could achieve the same end as vanilla HTML; but it comes
+          down to:
+        </p>
+
+        <ol>
+          <li>
+            The extra layer of abstraction, where markdown with shortcodes gets
+            mixed with templates and partials always left me chasing obscure
+            bugs.
+            <em
+              >"Where did that whitespace come from?", "Why hasn't this section
+              rendered?", "Does this element go in the template with supporting
+              front-matter or directly in the markdown file as HTML?"</em
+            >. Whilst undoubtedly slower initially, it's easier and perhaps even
+            faster over the course of years to just write exactly what you mean.
+            That leads me to...
+          </li>
+
+          <li>
+            The use of templates and shortcodes runs counter to the freeform and
+            standalone nature of the site. I want each page to feel unique and
+            stand on its own merit. Even a simple design system comprising a few
+            shortcodes to speed up image generation is a system that needs to be
+            maintained, and will add an extra step in experimenting with new
+            layouts. When I migrated from Ghost to Zola, I mimicked the
+            text-width/wide/wider convention for images and galleries, and
+            because I created them as shortcodes the design persisted because it
+            was easy.
+          </li>
+        </ol>
+
+        <blockquote>
+          Fast learns, slow remembers. Fast proposes, slow disposes. Fast is
+          discontinuous, slow is continuous. Fast and small instructs slow and
+          big by accrued innovation and by occasional revolution. Slow and big
+          controls small and fast by constraint and constancy. Fast gets all our
+          attention, slow has all the power. —Stewart Brand
+          <a href="https://jods.mitpress.mit.edu/pub/issue3-brand/release/2"
+            >Pace Layering: How Complex Systems Learn and Keep Learning</a
+          >
+        </blockquote>
+
+        <p>
+          This may change as patterns and common elements emerge. I may start to
+          encode those patterns in shortcodes to speed up page authoring.
+        </p>
+
+        <p>
+          More to come... Send me an
+          <a href="mailto:hello@jamiedumont.com">email</a> telling me to stop
+          messing about and get this page finished!
+        </p>
+      </section>
+
+      <footer>All words &amp; images &copy; 2024 Jamie Dumont</footer>
+    </main>
+  </body>
+</html>

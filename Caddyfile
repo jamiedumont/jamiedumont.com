@@ -31,6 +31,9 @@ jamiedumont.com {
   @shoots path_regexp shoots ^/portfolio/shoots/(.*)$
   redir @shoots /{re.shoots.1} permanent
   
-  redir /ollie-cooper* /makers/ollie-cooper
-  redir /dynamite-valley-brewing-co* /makers/dynamite-valley-brewing-co
+  redir /ollie-cooper* /projects/makers/ollie-cooper
+  redir /dynamite-valley-brewing-co* /projects/makers/dynamite-valley-brewing-co
+  redir /365* /projects/365
+  redir /studies /projects/studies
+  redir /makers /projects/makers
 }
