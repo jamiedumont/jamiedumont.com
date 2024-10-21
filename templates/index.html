@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ head::seo(config=config, context=section) }}
+{% endblock seo %}
+
+{% block content %}
+<section class="layout stack prose">
+  {{ section.content | safe }}
+</section>
+
+{% set blog = get_section(path="blog/_index.md") %}
+{% set last_post = blog.pages | sort(attribute="date") | last %}
+{{ blog::post(page=last_post) }}
+
+{% endblock content %}
+

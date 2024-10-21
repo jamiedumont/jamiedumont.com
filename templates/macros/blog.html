@@ -1,0 +1,46 @@
+{% macro preview(page) %}
+<article class="">
+  <a href="{{ page.permalink | safe }}">
+    <h3>
+      {{ page.title }}{% if page.extra.link %} &#9166;{% endif %} 
+    </h3>
+  </a>
+  
+  <p>{{ page.description }}</p>
+</article>
+{% endmacro preview %}
+
+{% macro post(page) %}
+
+<main class="layout stack prose">  
+    
+    {%- if page.date -%}
+    <p class="page-date">{{ page.date | date(format="%B %d, %Y")}}</p>
+    {%- endif -%}
+    {%- if page.extra.link -%}
+    <h1><a href="{{ page.extra.link }}">{{ page.title }} &#9166; </a></h1>
+    {%- else -%}
+    <h1>{{page.title}}</h1>
+    {%- endif %}
+    <p class="page-description">{{ page.description }}</p>
+
+
+
+    {{ page.content | safe }}
+
+    {% if page.lower or page.higher %}
+    <hr/>
+    <section class="stack post-links">
+      {% if page.lower %}
+        <a href="{{ page.lower.permalink }}">Next <span class="post-links__title">{{ page.lower.title }}</span></a>
+      {% endif %}
+
+      {% if page.higher %}
+        <a href="{{ page.higher.permalink }}">Previous <span class="post-links__title">{{ page.higher.title }}</span></a>
+      {% endif %}
+    </section>
+    {% endif %}
+
+  </main>
+
+{% endmacro %}

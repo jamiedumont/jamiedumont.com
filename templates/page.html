@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ head::seo(config=config, context=page) }}
+{% endblock seo %}
+
+{% block content %}
+
+  {{ blog::post(page=page) }}
+
+{% endblock content %}

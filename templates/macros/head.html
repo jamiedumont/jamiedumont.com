@@ -1,0 +1,53 @@
+{%- macro seo(config, context) -%}
+
+	{% set title = context.title ~ " » " ~ config.title | default(value=config.title) %}
+	{%- set description = context.description | default(value=config.description) -%}
+
+	<!-- About this page -->
+	<title>{{ title }}</title>
+
+	<meta name="description" content="{{ description }}" />
+	<link rel="canonical" href="{{ current_url | safe }}" />
+
+	{%- if config.author %}
+	<meta name="author" content="{{ config.author }}" />
+	<meta name="copyright" content="{{ config.author }}" />
+	{%- endif -%}
+
+	{%- if context.updated -%}
+	    {%- set last_updated = context.updated -%}
+  	{% elif context.date %}
+    	{%- set last_updated = context.date -%}
+  	{%- endif %}
+
+  	<!-- Facebook gubbins... -->
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:url" content="{{ current_url }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:site_name" content="{{ config.title }}" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="article" />
+  {% if last_updated %}
+  <meta property="og:updated_time" content="{{ last_updated }}" />
+  {% endif %}
+
+  <!-- ...followed by Twitter gubbins. Can't these multi-billion dollar companies parse standard meta tags?! -->
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:url" content="{{ current_url }}" />
+  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:card" content="summary" />
+
+  {#
+  {%- if context.extra.cover_image -%}
+  	{% set image_path = context.colocated_path ~ context.extra.cover_image %}
+  {%- else -%}
+    {% set image_path = config.extra.cover_image %}
+  {% endif -%}
+
+  {% set image = resize_image(path=image_path, width=1024, op="fit_width", format="jpg", quality=75) %}
+  	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="{{ image.url }}" />
+    <meta property="og:image" content="{{ image.url }}" />
+    #}
+
+{%- endmacro -%}

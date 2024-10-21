@@ -1,0 +1,36 @@
+{% import 'macros/head.html' as head %}
+{% import 'macros/blog.html' as blog %}
+
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="base" content="{{ config.base_url | safe }}" />
+
+    {%- block seo %}
+    {% endblock seo %}
+
+    <link rel="stylesheet" href="{{ get_url(path="css/screen.css", cachebust=true) }}" />
+  </head>
+  <body>
+    {% block header %}
+    <header>
+      <a href="/"><h1>Jamie Dumont</h1></a>
+      Software Developer
+    </header>
+    {% endblock header %}
+
+    {% block content %}{% endblock content %}
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="{{ get_url(path="@/blog/_index.md") }}">All posts</a></li>
+        </ul>
+      </nav>
+      <p>All words &amp; images &copy; {{ now() | date(format="%Y") }} Jamie Dumont</p>
+    </footer>
+    {% block scripts %}{% endblock scripts %}
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ head::seo(config=config, context=section) }}
+{% endblock seo %}
+
+{% block content %}
+
+<section class="layout stack prose blog-index">
+{% set blog = get_section(path="blog/_index.md") %}
+{% set month = "-1" %}
+
+{% for page in blog.pages | sort(attribute="date") | reverse  %}
+  {% set this_month = page.date | date(format="%B %Y") %}
+  {% if month != this_month %}
+    {% set_global month = this_month %}
+    <h2>{{ month }}</h2>
+    {% endif %}
+  {{ blog::preview(page=page) }}
+{% endfor %}
+</section>
+
+
+{% endblock content %}
+
