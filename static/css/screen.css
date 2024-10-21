@@ -212,6 +212,12 @@ strong {
 	color: var(--colour-mid);
 }
 
+pre {
+  overflow-x: scroll;
+  grid-column: wide-start / wide-end !important;
+  padding: 1rem 1.5rem;
+}
+
 
 
 fieldset {

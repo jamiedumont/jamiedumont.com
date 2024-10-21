@@ -1,0 +1,10 @@
+{% set styles = ["alert", "update"] %}
+{% if style and styles is not containing(style) %}
+  {{ throw(message="No callout style defined for '" ~ style ~ "'")}}
+{% endif %}
+<section class="callout {% if style %} callout--{{ style }}{% endif %}">
+  <span class="callout__title">{{ title }}</span>
+  <div class="flow prose">
+    {{ body | markdown | safe }}
+  </div>
+</section>

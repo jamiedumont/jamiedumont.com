@@ -1,0 +1,15 @@
+{% import "macros/images.html" as images %}
+
+{% set cxt = page | default(value=section) %}
+
+{# Check if the path passed to the shortcode is relative (1 section) or from root #}
+{% if path | split(pat="/") | length == 1 %}
+  {% set path = cxt.colocated_path ~ path %}
+{% endif %}
+
+{% if lazy is undefined %}
+  {% set lazy = true %}
+{% endif %}
+
+{{ images::single(path=path, alt=alt, caption=caption, lazy=lazy)}}
+

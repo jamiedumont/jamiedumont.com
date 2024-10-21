@@ -1,0 +1,165 @@
+{% macro single(path, alt, lazy) %}
+<figure>
+  <picture>
+    {% set image = resize_image(path=path, width=1024, op="fit_width",
+    format="webp", quality=75) %}
+    <source
+      media="(max-width: 683px)"
+      srcset="{{ image.url }}"
+      type="image/webp"
+    />
+    {% set image = resize_image(path=path, width=1024, op="fit_width",
+    format="jpg", quality=75) %}
+    <source
+      media="(max-width: 683px)"
+      srcset="{{ image.url }}"
+      type="image/jpeg"
+    />
+    {% set image = resize_image(path=path, width=2048, op="fit_width",
+    format="webp", quality=75) %}
+    <source
+      media="(min-width: 684px)"
+      srcset="{{ image.url }}"
+      type="image/webp"
+    />
+    {% set image = resize_image(path=path, width=2048, op="fit_width",
+    format="jpg", quality=75) %}
+    <source
+      media="(min-width: 684px)"
+      srcset="{{ image.url }}"
+      type="image/jpeg"
+
+    />
+    {% set image = resize_image(path=path, width=1024, op="fit_width",
+    format="jpg", quality=75) %}
+    <img
+      src="{{ image.url }}"
+      alt="{{ alt }}"
+      {% if lazy == false %}
+      loading="eager"
+      {% else %}
+      loading="lazy"
+      {% endif %}
+    />
+  </picture>
+  {% if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {% endif %}
+</figure>
+{% endmacro single %}
+
+{% macro row(images, alts, lazy) %}
+<figure>
+  <div class="image-row">
+    {% for path in images %} {% set image_webp = resize_image(path=path,
+    width=1024, op="fit_width", format="webp", quality=75) %} {% set image_jpg =
+    resize_image(path=path, width=1024, op="fit_width", format="jpg",
+    quality=75) %}
+    <picture style="flex: {{ image_jpg.width / image_jpg.height }};">
+      <source
+        srcset="{{ image_webp.url }}"
+        type="image/webp"
+      />
+      <source
+        srcset="{{ image_jpg.url }}"
+        type="image/jpeg"
+      />
+      <img
+        src="{{ image_jpg.url }}"
+        alt="{{ alts[loop.index0] }}"
+        {% if lazy == false %}
+        loading="eager"
+        {% else %}
+        loading="lazy"
+        {% endif %}
+      />
+    </picture>
+    {% endfor %}
+  </div>
+    {% if caption %}
+    <figcaption>{{ caption }}</figcaption>
+    {% endif %}
+</figure>
+{% endmacro row %}
+
+{% macro grid(images, alts, side="left", lazy) %}
+
+{% set image_count = images | length %}
+
+{% if image_count > 3 %}
+  {{ throw(message="No more than 3 images can be passed to images::grid")}}
+{% endif %}
+
+{% if image_count != alts | length %}
+  {{ throw(message="Provide the same number of 'alts' as images")}}
+{% endif %}
+
+{% if image_count == 3 %}
+  {% set portrait_index = [] %}
+  {% set portrait_count = 0 %}
+  
+  {% for path in images %}
+    {% set meta = get_image_metadata(path=path) %}
+    {% set is_portrait = false %}
+    {% if meta.height > meta.width %}
+      {% set is_portrait = true %}
+      {% set_global portrait_count = portrait_count + 1 %}
+    {% endif %}
+    {% set_global portrait_index = portrait_index | concat(with=is_portrait) %}
+  {% endfor %}
+  
+  {% if portrait_count > 2 %}
+    {{ throw(message="No more than 2 portrait images can be passed to images::grid")}}
+  {% endif %}
+  
+  {% if portrait_count == 2 and image_count > 2 %}
+    {{ throw(message="2 portrait image can only be passed to images::grid alone. Remove the extra landscape image")}}
+  {% endif %}
+  
+  {% if portrait_count == 1 and image_count == 2 %}
+    {{ self::row(images=images, alts=alts)}}
+  {% endif %}
+  
+  {% set figure_class = "left" %}
+  {% if portrait_index[2] == true %}
+    {% set figure_class = "right" %}
+  {% endif %}
+  
+  <figure class="image-grid {{ figure_class }}">
+  {% set_global land_count = 0 %}
+  {% for path in images %}
+  {% set image = resize_image(path=path,
+  width=1024, op="fit_width", format="webp", quality=75) %}
+  {% if portrait_index[loop.index0] %}
+    <picture class="portrait">
+  {% else %}
+    {% if land_count == 0 %}
+      <picture class="area-b">
+    {% else %}
+      <picture class="area-c">
+    {% endif %}
+    {% set_global land_count = land_count + 1 %}
+  {% endif %}
+  
+    <img
+      src="{{ image.url }}"
+      alt="{{ alts[loop.index0] }}"
+      {% if lazy == false %}
+      loading="eager"
+      {% else %}
+      loading="lazy"
+      {% endif %}
+    >
+  </picture>
+  {% endfor %}
+  {% if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {% endif %}
+  </figure>
+{% elif image_count == 2 %}
+  {{ self::row(images=images, alts=alts)}}
+{% else %}
+  {{ self::single(path=images[0], alt=alts[0])}}
+{% endif %}
+
+{% endmacro grid %}

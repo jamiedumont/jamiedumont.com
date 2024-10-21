@@ -1,0 +1,20 @@
+{% import "macros/images.html" as images %}
+
+{% set cxt = page | default(value=section) %}
+
+{% set image_paths = [] %}
+
+{% for image in images %}
+  {% if image | split(pat="/") | length == 1 %}
+    {% set new_path = cxt.colocated_path ~ image %}
+    {% set_global image_paths = image_paths | concat(with=new_path) %}
+  {% else %}
+    {% set_global image_paths = image_paths | concat(with=image) %}
+  {% endif %}
+{% endfor %}
+
+{% if lazy is undefined %}
+  {% set lazy = true %}
+{% endif %}
+
+{{ images::grid(images=image_paths, alts=alts, side=side, caption=caption, lazy=lazy)}}
